@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-    <button>valider</button>
-    {{ form_end(form) }}
-
+    <div class="col-12 text-center">
+        <div class="my-5">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-outline-success btn-lg my-3">Ajouter</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}

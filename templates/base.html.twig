@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Liste de cuisine{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫</text></svg>">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/list.png') }}" />
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         <link rel="stylesheet" href="/build/app.css">
         <script src="/build/app.js"></script>
@@ -16,7 +16,8 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="bg-">
+    <body>
+    {% include "component/_navbar.html.twig" %}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
             <div class="alert alert-{{ label }}">
@@ -24,6 +25,10 @@
             </div>
         {% endfor %}
     {% endfor %}
-        {% block body %}{% endblock %}
+    <div class="container-fluid">
+        <div class="row">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
     </body>
 </html>
