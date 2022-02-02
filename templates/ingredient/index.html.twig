@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<ul>
+    {% for ingredient in ingredients %}
+            <li>
+                {{ ingredient.name }} <a href=""><i class="fas fa-trash mx-2"></i></a>
+            </li>
+    {% endfor %}
+</ul>
+
+    <a href="{{ path('new_ingredient') }}">
+        ajouter un ingredient
+    </a>
+
+
+
+{% endblock %}
