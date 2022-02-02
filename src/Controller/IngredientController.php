@@ -77,4 +77,31 @@ class IngredientController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    /**
+     * @Route("/supprimer_un_ingredient/{id}", name="delete_ingredient")
+     */
+    public function delete(ManagerRegistry $managerRegistry, int $id): Response
+    {
+        $entityManager = $managerRegistry->getManager();
+        $ingredient = $entityManager->getRepository(Ingredient::class)->find($id);
+        $name = $ingredient->getName();
+
+        if (!$ingredient) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $entityManager->remove($ingredient);
+        $entityManager->flush();
+        $this->addFlash(
+            'danger',
+            'L\'ingredient ' . $name . ' a bien été supprimé!'
+        );
+
+        return $this->redirectToRoute('all_ingredient', [
+            'id' => $ingredient->getId()
+        ]);
+    }
 }
