@@ -2,14 +2,17 @@
 
 
 {% block body %}
-<div>
-    <a href="">
-        Mes menus
-    </a>
-</div>
-<div>
-    <a href="">
-        Mes ingredients
-    </a>
-</div>
+    <div class="col-12 text-center">
+        <div class="m-5">
+            <a href="">
+                <button class="btn btn-outline-success btn-lg" type="button">Mes menus</button>
+            </a>
+        </div>
+        <div class="m-5">
+            <a href="{{ path('all_ingredient') }}">
+                <button class="btn btn-outline-success btn-lg" type="button">Mes ingredients</button>
+            </a>
+        </div>
+    </div>
+
 {% endblock %}

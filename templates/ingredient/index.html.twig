@@ -1,16 +1,25 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<div class="col-12 text-center">
+    <div class="container">
+        <div class="row justify-content-center my-3">
+            <div class="col-9">
+                <ul class="list-group">
+                    {% for ingredient in ingredients %}
+                        <li class="list-group-item">
+                            {{ ingredient.name }}
+                            <a href="{{ path('edit_ingredient', {id: ingredient.id}) }}"><i class="far fa-edit text-success mx-2"></i></a>
+                            <a href="{{ path('delete_ingredient', {id: ingredient.id}) }}"><i class="fas fa-trash text-success mx-2"></i></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 
-<ul>
-    {% for ingredient in ingredients %}
-            <li>
-                {{ ingredient.name }}
-                <a href="{{ path('edit_ingredient', {id: ingredient.id}) }}"><i class="far fa-edit mx-2"></i></a>
-                <a href="{{ path('delete_ingredient', {id: ingredient.id}) }}"><i class="fas fa-trash mx-2"></i></a>
-            </li>
-    {% endfor %}
-</ul>
     <a href="{{ path('new_ingredient') }}">
-        ajouter un ingredient
+        <button class="btn btn-outline-success btn-lg" type="button">Ajouter un ingredient</button>
     </a>
+</div>
+
 {% endblock %}
