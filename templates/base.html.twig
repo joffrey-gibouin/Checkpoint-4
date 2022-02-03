@@ -15,7 +15,17 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="bg-dark text-light">
+    <body class="bg-dark text-light"
+    {{ stimulus_controller('symfony/ux-swup/swup', {
+        containers: ['#swup', '#nav'],
+        animateHistoryBrowsing: true,
+        animationSelector: '[class*="transition-"]',
+        cache: true,
+        theme: 'slide',
+        debug: true,
+    }) }}
+    >
+    <header id="nav">
         {% include "component/_navbar.html.twig" %}
         {% for label, messages in app.flashes %}
             {% for message in messages %}
@@ -24,10 +34,11 @@
                 </div>
             {% endfor %}
         {% endfor %}
-        <div class="container-fluid">
+    </header>
+        <main class="container-fluid" id="swup">
             <div class="row justify-content-center">
                 {% block body %}{% endblock %}
             </div>
-        </div>
+        </main>
     </body>
 </html>
