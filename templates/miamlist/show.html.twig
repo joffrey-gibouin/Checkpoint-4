@@ -5,10 +5,9 @@
             <h1 class="m-4">Miamlist {{ miamlist.name }}</h1>
             <div class="row justify-content-center">
                 <div class="col-9 m-3">
-                        {% for miamlist in miamlist.menu %}
-                        {% for ingredient in miamlist.ingredients %}
+                    {% for miamlist in miamlist.menu %}
+                            {% for ingredient in miamlist.ingredients %}
                     <div class="form-check form-switch">
-
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
                         <label class="form-check-label fs-2" for="flexSwitchCheckDefault">{{ ingredient.name }}</label>
                     </div>
