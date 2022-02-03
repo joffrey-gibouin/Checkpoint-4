@@ -21,10 +21,9 @@ class RegistrationFormType extends AbstractType
             ->add('nickname', TextType::class, [
                 'label' => 'Pseudo',
                 'attr' => [
-                    'class' => 'text-center border rounded-3 shadow-lg',
+                    'class' => 'text-center border rounded-3',
                 ]
             ])
-
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
@@ -32,7 +31,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Mot de passe',
                 'attr' => [
                     'autocomplete' => 'new-password',
-                    'class' => 'text-center border rounded-3 shadow-lg',
+                    'class' => 'text-center border rounded-3',
                 ],
                 'constraints' => [
                     new NotBlank([

@@ -11,24 +11,23 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-    {% include "component/_navbar.html.twig" %}
-    {% for label, messages in app.flashes %}
-        {% for message in messages %}
-            <div class="alert alert-{{ label }}">
-                {{ message }}
-            </div>
+    <body class="bg-dark text-light">
+        {% include "component/_navbar.html.twig" %}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
         {% endfor %}
-    {% endfor %}
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            {% block body %}{% endblock %}
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                {% block body %}{% endblock %}
+            </div>
         </div>
-    </div>
     </body>
 </html>

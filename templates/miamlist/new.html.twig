@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
-
-
 {% block body %}
-    <h1>Nouvelle Miamlist</h1>
-
-    {{ include('miamlist/_form.html.twig') }}
-
-    <a href="{{ path('miamlist_index') }}">back to list</a>
+    <h1 class="text-center m-4">Nouvelle Miamlist</h1>
+    {{ include('component/_form.html.twig') }}
+    <div class="text-center">
+        <a href="{{ path('miamlist_index') }}"><i class="fas fa-undo fs-1 text-success"></i></a>
+    </div>
 {% endblock %}
