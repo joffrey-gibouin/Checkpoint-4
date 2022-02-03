@@ -4,13 +4,18 @@
 {% block body %}
     <div class="col-12 text-center">
         <div class="m-5">
-            <a href="">
+            <a href="{{ path('all_ingredient') }}">
+                <button class="btn btn-outline-success btn-lg shadow-lg" type="button">Mes ingredients</button>
+            </a>
+        </div>
+        <div class="m-5">
+            <a href="{{ path('menu_index') }}">
                 <button class="btn btn-outline-success btn-lg" type="button">Mes menus</button>
             </a>
         </div>
         <div class="m-5">
-            <a href="{{ path('all_ingredient') }}">
-                <button class="btn btn-outline-success btn-lg" type="button">Mes ingredients</button>
+            <a href="{{ path('miamlist_index') }}">
+                <button class="btn btn-outline-success btn-lg" type="button">Mes Miamlist</button>
             </a>
         </div>
     </div>
