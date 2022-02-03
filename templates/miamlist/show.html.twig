@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Miamlist{% endblock %}
+
+{% block body %}
+    <div class="col-12 text-center">
+        <div class="container">
+            <h1>Miamlist {{ miamlist.name }}</h1>
+            <div class="row justify-content-center">
+                <div class="col-9 m-3">
+                    <ul class="list-group">
+                        {% for miamlist in miamlist.menu %}
+                        {% for ingredient in miamlist.ingredients %}
+                            <li class="list-group-item">
+                                {{ ingredient.name }}
+                            </li>
+                        {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="m-3">
+                <a href="{{ path('miamlist_index') }}"><i class="fas fa-undo fs-1"></i></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

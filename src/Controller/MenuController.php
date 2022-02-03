@@ -108,7 +108,7 @@ class MenuController extends AbstractController
         );
 
         return $this->redirectToRoute('menu_index', [
-            'id' => $menu->getID()
+            'id' => $menu->getID(),
         ]);
     }
 }

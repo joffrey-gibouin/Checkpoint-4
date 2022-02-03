@@ -34,9 +34,15 @@ class Menu
      */
     private $ingredients;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Miamlist::class, mappedBy="menu")
+     */
+    private $miamlists;
+
     public function __construct()
     {
         $this->ingredients = new ArrayCollection();
+        $this->miamlists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,6 +96,33 @@ class Menu
     {
         if ($this->ingredients->removeElement($ingredient)) {
             $ingredient->removeMenu($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Miamlist[]
+     */
+    public function getMiamlists(): Collection
+    {
+        return $this->miamlists;
+    }
+
+    public function addMiamlist(Miamlist $miamlist): self
+    {
+        if (!$this->miamlists->contains($miamlist)) {
+            $this->miamlists[] = $miamlist;
+            $miamlist->addMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMiamlist(Miamlist $miamlist): self
+    {
+        if ($this->miamlists->removeElement($miamlist)) {
+            $miamlist->removeMenu($this);
         }
 
         return $this;

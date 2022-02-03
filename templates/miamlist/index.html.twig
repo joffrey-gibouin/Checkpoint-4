@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Miamlist index{% endblock %}
+
+{% block body %}
+    <div class="col-12 text-center">
+        <div class="container">
+            <h1>Mes Miamlist</h1>
+            <div class="row justify-content-center my-3">
+                <div class="col-9">
+                    <ul class="list-group">
+                        {% for miamlist in miamlists %}
+                            <li class="list-group-item container">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <a href="{{ path('miamlist_show', {'id': miamlist.id}) }}">{{ miamlist.name }}</a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{{ path('miamlist_edit', {'id': miamlist.id}) }}"><i class="far fa-edit text-success mx-2"></i></a>
+                                    </div>
+                                    <div class="col-2">
+                                            <form method="post" action="{{ path('miamlist_delete', {'id': miamlist.id}) }}" onsubmit="return confirm('Êtes vous sûrs de vouloir supprimer ce Menu?');">
+                                                <button class="btn"><i class="fas fa-trash text-success mx-2"></i></button>
+                                            </form>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <a href="{{ path('miamlist_new') }}">
+            <button class="btn btn-outline-success btn-lg" type="button">Ajouter une Miamlist</button>
+        </a>
+    </div>
+{% endblock %}
