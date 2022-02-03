@@ -49,7 +49,6 @@ class MiamlistController extends AbstractController
 
             return $this->redirectToRoute('miamlist_index');
         }
-
         return $this->renderForm('miamlist/new.html.twig', [
             'miamlist' => $miamlist,
             'form' => $form,
@@ -79,10 +78,9 @@ class MiamlistController extends AbstractController
 
             return $this->redirectToRoute('miamlist_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('miamlist/edit.html.twig', [
             'miamlist' => $miamlist,
-            'form' => $form,
+            'form'     => $form,
         ]);
     }
 
@@ -99,7 +97,6 @@ class MiamlistController extends AbstractController
                 'No product found for id '.$id
             );
         }
-
         $name = $miamlist->getName();
         $entityManager->remove($miamlist);
         $entityManager->flush();

@@ -18,13 +18,13 @@ class MenuType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom du menu',
                 'attr' => [
-                'class' => 'text-center text-primary mb-3',
+                'class' => 'text-center mb-3',
                  ],
             ])
             ->add('description', TextType::class, [
                 'label' => 'Description du menu',
                 'attr' => [
-                    'class' => 'text-center text-primary mb-3',
+                    'class' => 'text-center mb-3',
                 ],
             ])
             ->add('ingredients', EntityType::class, [
@@ -35,7 +35,7 @@ class MenuType extends AbstractType
                 'by_reference' => false,
                 'label' => 'Nom des ingrédients',
                 'attr' => [
-                    'class' => 'text-center text-primary mt-5',
+                    'class' => 'text-center mt-5',
                 ],
             ])
         ;

@@ -16,13 +16,19 @@ class MiamlistType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom de la liste'
+                'label' => 'Nom de la liste',
+                'attr' => [
+                    'class' => 'text-center mb-5',
+                ],
             ])
             ->add('menu', EntityType::class, [
                 'class' => Menu::class,
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true,
+                'attr' => [
+                    'class' => 'text-center mt-5',
+                ],
             ])
         ;
     }

@@ -1,26 +1,22 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Miamlist{% endblock %}
-
 {% block body %}
     <div class="col-12 text-center">
         <div class="container">
-            <h1>Miamlist {{ miamlist.name }}</h1>
+            <h1 class="m-4">Miamlist {{ miamlist.name }}</h1>
             <div class="row justify-content-center">
                 <div class="col-9 m-3">
-                    <ul class="list-group">
-                        {% for miamlist in miamlist.menu %}
-                        {% for ingredient in miamlist.ingredients %}
-                            <li class="list-group-item">
-                                {{ ingredient.name }}
-                            </li>
+                    {% for miamlist in miamlist.menu %}
+                            {% for ingredient in miamlist.ingredients %}
+                    <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label fs-2" for="flexSwitchCheckDefault">{{ ingredient.name }}</label>
+                    </div>
                         {% endfor %}
                         {% endfor %}
-                    </ul>
                 </div>
             </div>
             <div class="m-3">
-                <a href="{{ path('miamlist_index') }}"><i class="fas fa-undo fs-1"></i></a>
+                <a href="{{ path('miamlist_index') }}"><i class="fas fa-undo fs-1 text-success"></i></a>
             </div>
         </div>
     </div>
