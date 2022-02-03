@@ -85,7 +85,6 @@ class IngredientController extends AbstractController
     {
         $entityManager = $managerRegistry->getManager();
         $ingredient = $entityManager->getRepository(Ingredient::class)->find($id);
-        $name = $ingredient->getName();
 
         if (!$ingredient) {
             throw $this->createNotFoundException(
@@ -93,6 +92,7 @@ class IngredientController extends AbstractController
             );
         }
 
+        $name = $ingredient->getName();
         $entityManager->remove($ingredient);
         $entityManager->flush();
         $this->addFlash(
