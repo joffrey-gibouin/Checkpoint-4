@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu index{% endblock %}
+
+{% block body %}
+    <div class="col-12 text-center">
+        <div class="container">
+            <h1>Mes menus</h1>
+            <div class="row justify-content-center my-3">
+                <div class="col-9">
+                    <ul class="list-group">
+                        {% for menu in menus %}
+                            <li class="list-group-item container">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <a href="{{ path('menu_show', {'id': menu.id}) }}">{{ menu.name }}</a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{{ path('menu_edit', {'id': menu.id}) }}"><i class="far fa-edit text-success mx-2"></i></a>
+                                    </div>
+                                    <div class="col-2">
+                                        <a href="{{ path('menu_delete', {'id': menu.id}) }}" onsubmit="return confirm('Êtes vous sûrs de vouloir supprimer ce Menu?');">
+                                            <form method="post" action="{{ path('menu_delete', {'id': menu.id}) }}">
+                                                <button class="btn"><i class="fas fa-trash text-success mx-2"></i></button>
+                                            </form>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p>{{ menu.description }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <a href="{{ path('menu_new') }}">
+            <button class="btn btn-outline-success btn-lg" type="button">Ajouter un Menu</button>
+        </a>
+    </div>
+
+{% endblock %}
