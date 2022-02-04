@@ -32,19 +32,18 @@ class IngredientController extends AbstractController
     {
         $entityManager = $managerRegistry->getManager();
         $ingredient = new Ingredient();
-        $name = $ingredient->getName();
-
         $form = $this->createForm(IngredientType::class, $ingredient);
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $ingredient = $form->getData();
             $entityManager->persist($ingredient);
             $entityManager->flush();
 
+            $name = $ingredient->getName();
             $this->addFlash(
                 'success',
-                'L\'ingredient ' . $name . 'a bien été ajouté.'
+                'L\'ingredient a '. $name .' bien été ajouté.'
             );
             return $this->redirectToRoute('all_ingredient');
         }
@@ -61,11 +60,12 @@ class IngredientController extends AbstractController
     {
         $form = $this->createForm(IngredientType::class, $ingredient);
         $form->handleRequest($request);
-        $name = $ingredient->getName();
 
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+
+            $name = $ingredient->getName();
             $this->addFlash(
                 'success',
                 'L\'ingredient ' . $name . ' a bien été modifié!'
@@ -92,9 +92,10 @@ class IngredientController extends AbstractController
             );
         }
 
-        $name = $ingredient->getName();
         $entityManager->remove($ingredient);
         $entityManager->flush();
+
+        $name = $ingredient->getName();
         $this->addFlash(
             'danger',
             'L\'ingredient ' . $name . ' a bien été supprimé!'

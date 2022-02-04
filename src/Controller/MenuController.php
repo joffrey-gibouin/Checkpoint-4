@@ -35,17 +35,18 @@ class MenuController extends AbstractController
     {
         $entityManager = $managerRegistry->getManager();
         $menu = new Menu();
-        $name = $menu->getName();
-
         $form = $this->createForm(MenuType::class, $menu);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $menu = $form->getData();
             $entityManager->persist($menu);
             $entityManager->flush();
+
+            $name = $menu->getName();
             $this->addFlash(
                 'success',
-                'Le menu ' . $name . 'a bien été ajouté.'
+                'Le menu ' . $name . ' a bien été ajouté.'
             );
             return $this->redirectToRoute('menu_index');
         }
@@ -77,6 +78,11 @@ class MenuController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $name = $menu->getName();
+            $this->addFlash(
+                'success',
+                'Le menu ' . $name . ' a bien été modifié!'
+            );
             return $this->redirectToRoute('menu_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -99,9 +105,10 @@ class MenuController extends AbstractController
                 'No product found for id '.$id
             );
         }
-        $name = $menu->getName();
         $entityManager->remove($menu);
         $entityManager->flush();
+
+        $name = $menu->getName();
         $this->addFlash(
             'danger',
             'Le menu ' . $name . ' a bien été supprimé!'
