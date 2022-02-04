@@ -34,14 +34,15 @@ class MiamlistController extends AbstractController
     {
         $entityManager = $managerRegistry->getManager();
         $miamlist = new Miamlist();
-        $name = $miamlist->getName();
-
         $form = $this->createForm(MiamlistType::class, $miamlist);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $miamlist = $form->getData();
             $entityManager->persist($miamlist);
             $entityManager->flush();
+
+            $name = $miamlist->getName();
             $this->addFlash(
                 'success',
                 'La liste ' . $name . ' a bien été ajouté.'
@@ -75,6 +76,12 @@ class MiamlistController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+
+            $name = $miamlist->getName();
+            $this->addFlash(
+                'success',
+                'La Miamlist ' . $name . ' a bien été modifié!'
+            );
 
             return $this->redirectToRoute('miamlist_index', [], Response::HTTP_SEE_OTHER);
         }
