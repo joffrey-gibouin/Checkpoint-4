@@ -2,13 +2,13 @@
 {% block body %}
     <div class="col-12 text-center">
         <div class="container">
-            <h1 class="m-4">Miamlist {{ miamlist.name }}</h1>
+            <h1 class="m-4">{{ miamlist.name }}</h1>
             <div class="row justify-content-center">
-                <div class="col-9 m-3">
+                <div class="col-12 col-sm-9 col-ls-6 m-3">
                     {% for miamlist in miamlist.menu %}
                             {% for ingredient in miamlist.ingredients %}
-                    <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <div class="form-check form-switch m-3">
+                    <input class="form-check-input mt-1 mt-lg-3" type="checkbox" id="flexSwitchCheckDefault">
                         <label class="form-check-label fs-2" for="flexSwitchCheckDefault">{{ ingredient.name }}</label>
                     </div>
                         {% endfor %}
